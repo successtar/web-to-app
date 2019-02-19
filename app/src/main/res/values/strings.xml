@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Web  to App</string>
+    <string name="error_message">Error occured, please check your internet connecion.</string>
+</resources>
