@@ -1,9 +1,13 @@
 package com.myexampoint.webtoapp;
 
 
+import android.content.DialogInterface;
+import android.net.http.SslError;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.graphics.Bitmap;
@@ -34,10 +38,45 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    /**
+    * This allows for a splash screen
+    *  Hide elements once the page loads
+    * Show custom error page
+    * Resolve issue with SSL certificate
+    **/
 
-    // This allows for a splash screen
-    // (and hide elements once the page loads)
     private class CustomWebViewClient extends WebViewClient {
+
+        // Handle SSL issue
+        @Override
+        public void onReceivedSslError(WebView view, final SslErrorHandler handler, SslError error) {
+
+            final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+            builder.setMessage(R.string.notification_error_ssl_cert_invalid);
+
+            builder.setPositiveButton("continue", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    handler.proceed();
+                }
+            });
+
+            builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    handler.cancel();
+                }
+            });
+
+            final AlertDialog dialog = builder.create();
+
+            dialog.show();
+        }
 
         @Override
         public void onPageStarted(WebView webview, String url, Bitmap favicon) {
@@ -79,8 +118,32 @@ public class MainActivity extends AppCompatActivity {
                 case KeyEvent.KEYCODE_BACK:
                     if (webview.canGoBack()) {
                         webview.goBack();
-                    } else {
-                        finish();
+                    }
+                    else {
+
+                        final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+                        builder.setMessage(R.string.exit_app);
+
+                        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                finish();
+                            }
+                        });
+
+                        builder.setNegativeButton("No", new DialogInterface.OnClickListener(){
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                // Do nothing
+                            }
+                        });
+
+                        final AlertDialog dialog = builder.create();
+
+                        dialog.show();
                     }
                     return true;
             }
