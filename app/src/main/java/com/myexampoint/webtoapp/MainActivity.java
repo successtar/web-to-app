@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     String ShowOrHideWebViewInitialUse = "show";
     private WebView webview ;
     private ProgressBar spinner;
-    String myurl = "https://myexampoint.com"; //Change this  to your website hostname
+    String myurl = "https://successtar.github.io"; //Change this  to your website hostname
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,11 +98,10 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-
+        // Show custom error page
         @Override
         public void onReceivedError(WebView view, int errorCode,
                                     String description, String failingUrl) {
-            //   view.loadUrl("about:blank");
             myurl = view.getUrl();
             setContentView(R.layout.error);
             super.onReceivedError(view, errorCode, description, failingUrl);
@@ -152,8 +151,9 @@ public class MainActivity extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
+    /* Retry Loading the page */
 
-    public void bottomClick(View v){
+    public void tryAgain(View v){
 
         setContentView(R.layout.activity_main);
         webview =(WebView)findViewById(R.id.webView);

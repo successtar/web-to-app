@@ -24,7 +24,7 @@
         android:text="Try Again"
         android:textSize="20sp"
         android:gravity="center"
-        android:onClick="bottomClick"
+        android:onClick="tryAgain"
 
 
         />
