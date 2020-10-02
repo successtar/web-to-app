@@ -1,4 +1,4 @@
-# web-to-app
+# App for web
 
 Android source code for android apk file of your website.
 
