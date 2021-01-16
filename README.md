@@ -1,6 +1,6 @@
 # web-to-app
 
-The easy and fast way to creating a native android app for a website.
+The easy and fast way to create a native android app for a website.
 
 ## Getting Started
 1. Download and Install Android Studio
