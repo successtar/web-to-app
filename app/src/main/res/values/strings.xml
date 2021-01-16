@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Web  to App</string>
-    <string name="error_message">Error occured, please check your internet connecion.</string>
+    <string name="error_message">An error has occurred, please check your internet connection.</string>
     <string name="notification_error_ssl_cert_invalid">SSL Error! Give Permission</string>
+    <string name="toast_navigation_prevented">Navigation prevented</string>
     <string name="exit_app">Do you want to  exit this application?</string>
 </resources>
