@@ -13,6 +13,10 @@ import android.webkit.WebViewClient;
 import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Toast;
+import android.os.Handler;
+import android.webkit.WebSettings;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,19 +36,17 @@ public class MainActivity extends AppCompatActivity {
 
         webview.getSettings().setJavaScriptEnabled(true);
         webview.getSettings().setDomStorageEnabled(true);
+        webview.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
         webview.setOverScrollMode(WebView.OVER_SCROLL_NEVER);
         webview.loadUrl(myurl);
-
     }
-
 
     /**
     * This allows for a splash screen
-    *  Hide elements once the page loads
+    * Hide elements once the page loads
     * Show custom error page
     * Resolve issue with SSL certificate
     **/
-
     private class CustomWebViewClient extends WebViewClient {
 
         // Handle SSL issue
@@ -110,45 +112,27 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private boolean doubleBackToExitPressedOnce = false;
+
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (event.getAction() == KeyEvent.ACTION_DOWN) {
-            switch (keyCode) {
-                case KeyEvent.KEYCODE_BACK:
-                    if (webview.canGoBack()) {
-                        webview.goBack();
-                    }
-                    else {
-
-                        final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-
-                        builder.setMessage(R.string.exit_app);
-
-                        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                finish();
-                            }
-                        });
-
-                        builder.setNegativeButton("No", new DialogInterface.OnClickListener(){
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                // Do nothing
-                            }
-                        });
-
-                        final AlertDialog dialog = builder.create();
-
-                        dialog.show();
-                    }
-                    return true;
+    public void onBackPressed() {
+        if (webview.canGoBack()) {
+            webview.goBack();
+        } else {
+            if (doubleBackToExitPressedOnce) {
+                finish();
+                return;
             }
-
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, R.string.exit_app, Toast.LENGTH_SHORT).show();
+    
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce=false;
+                }
+            }, 2000);
         }
-        return super.onKeyDown(keyCode, event);
     }
 
     /* Retry Loading the page */
