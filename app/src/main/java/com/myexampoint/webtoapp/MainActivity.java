@@ -112,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // This shows the exit app dialog when leaving the app. You can update this section to fit your needs.
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
             switch (keyCode) {
                 case KeyEvent.KEYCODE_BACK:
@@ -166,4 +167,5 @@ public class MainActivity extends AppCompatActivity {
         webview.loadUrl(myurl);
     }
 }
+
 
