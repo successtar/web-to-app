@@ -12,6 +12,7 @@ web-to-app.apk is the built sample from the source code. The app loads https://s
 
 You can install and run web-to-app.apk (android application of your website) on your android phone to see how your website will look like and the behaviour if you use this source code.
 
+<b>Note:</b> You will need to install Android Studio to test and build the APK file from the source code.
 
 ![web-to-app-1](https://github.com/user-attachments/assets/459dd517-2522-47a5-b9cb-edb07eb54fd9)
 
