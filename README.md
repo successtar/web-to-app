@@ -14,8 +14,10 @@ You can install and run web-to-app.apk (android application of your website) on 
 
 <b>Note:</b> You will need to install Android Studio to test and build the APK file from the source code.
 
-<img src="https://github.com/user-attachments/assets/459dd517-2522-47a5-b9cb-edb07eb54fd9" alt="web-to-app-1" width="280"/>
-<img src="https://github.com/user-attachments/assets/92d5e3af-d10b-400f-bba1-dd16e6f137e4" alt="web-to-app-2" width="280"/>
-<img src="https://github.com/user-attachments/assets/505a6ca5-2d3a-47c2-b64c-9b1d35646151" alt="web-to-app-3" width="280"/>
+<img src="https://github.com/user-attachments/assets/9d850d6b-3c15-428a-93a9-296279af6573" alt="web-to-app-1" width="350"/>
+<img src="https://github.com/user-attachments/assets/459dd517-2522-47a5-b9cb-edb07eb54fd9" alt="web-to-app-2" width="350"/>
+<img src="https://github.com/user-attachments/assets/92d5e3af-d10b-400f-bba1-dd16e6f137e4" alt="web-to-app-3" width="350"/>
+<img src="https://github.com/user-attachments/assets/505a6ca5-2d3a-47c2-b64c-9b1d35646151" alt="web-to-app-4" width="350"/>
+
 
 
